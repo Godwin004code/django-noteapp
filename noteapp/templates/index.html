@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+    <title>Devilon Note App</title>
+  </head>
+  <body>
+    <header>
+      <h2>My Notes</h2>
+    <p>This is where I keep track of my daily occurences</p>
+    </header>
+    <div class='add-btn'>
+      <a href='addnote'/>+</a>
+    </div>
+    <div class='yt'>
+      <a href='https://youtube.com/channel/UCHaADnRkpHniUm3ao3TrrSg'>Devilon studio</a>
+    </div>
+    <div class='notes'>
+    {% for note in data %}
+      <div class='note'>
+        {% comment %} {{forloop.counter}} {% endcomment %}
+        <h2 class='title'>{{note.title}}</h2>
+        {% comment %} <p class='content'>{{note.content}}</p> {% endcomment %}
+        <h2 class='date'>Added on {{note.date_added}}</h2>
+        
+          <a class='edit-btn' href='edit/{{note.id}}'>Edit</a>
+        
+        <a class='delete-btn' href='delete/{{note.id}}'>Delete</a>
+       
+      </div>
+    {% endfor %}
+  </div>
+  </body>
+</html>

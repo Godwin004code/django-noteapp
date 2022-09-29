@@ -1,0 +1,19 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+
+<div class='details'>
+    <h2>{{edited.title}}</h2>
+<p>{{edited.content}}</p>
+<a style='color: white; text-decoration: none;' class='delete-btn' href='delete/{{edited.id}}'>Delete</a>
+</div>
+<h2 class='single-page-h2'>Update Note {{edited.id}}</h2>
+<form action="update/{{edited.id}}" method="POST">
+    {%csrf_token%}
+    <label>Title:</label>
+    <input type="text" name="title" value='{{edited.title}}' placeholder='Title...' />
+    <label>Content:</label>
+    <input type="text" name="content" value='{{edited.content}}' placeholder='Content...' /> 
+    <label>Date:</label>
+    <input type="date" name="date_added" value='{{edited.date_added}}' />
+    <button type="submit">Update</button>
+</form>

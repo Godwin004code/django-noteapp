@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+<h2 class='single-page-h2'>Add Note</h2>
+
+<form action="create/" method="POST">
+    {%csrf_token%}
+    <label>Title:</label> <input type="text" name="title" placeholder='Title...' />
+    <label>Content:</label>
+    <input type="text" name="content"  placeholder='Content...'/> 
+    <label>Date:</label>
+    <input type="date" name="date_added" />
+    <button type="submit">Create</button>
+</form>
