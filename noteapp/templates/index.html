@@ -23,19 +23,23 @@
       <a href='https://youtube.com/channel/UCHaADnRkpHniUm3ao3TrrSg'>Devilon studio</a>
     </div>
     <div class='notes'>
-    {% for note in data %}
-      <div class='note'>
-        {% comment %} {{forloop.counter}} {% endcomment %}
-        <h2 class='title'>{{note.title}}</h2>
-        {% comment %} <p class='content'>{{note.content}}</p> {% endcomment %}
-        <h2 class='date'>Added on {{note.date_added}}</h2>
-        
-          <a class='edit-btn' href='edit/{{note.id}}'>Edit</a>
-        
-        <a class='delete-btn' href='delete/{{note.id}}'>Delete</a>
-       
-      </div>
-    {% endfor %}
+   {% if data.length == 0 %}
+      <h2>You've no note here</h2>
+   {% else %}
+   {% for note in data reversed %}
+   <div class='note'>
+     {% comment %} {{forloop.counter}} {% endcomment %}
+     <h2 class='title'>{{note.title}}</h2>
+     {% comment %} <p class='content'>{{note.content}}</p> {% endcomment %}
+     <h2 class='date'>Added on {{note.date_added}}</h2>
+     
+       <a class='edit-btn' href='edit/{{note.id}}'>Edit</a>
+     
+     <a class='delete-btn' href='delete/{{note.id}}'>Delete</a>
+    
+   </div>
+ {% endfor %}
+   {% endif %}
   </div>
   </body>
 </html>
